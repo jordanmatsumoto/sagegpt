@@ -1,6 +1,6 @@
 # SageGPT
 
-This repository contains **SageGPT**, an intelligent, multimodal AI tutor built with **Python**, **OpenAI’s GPT-4o-mini**, and **Gradio**. SageGPT acts as a friendly technical tutor who answers questions about code, software engineering, data science, and LLMs by providing concise explanations, code examples, and optionally generating diagrams and spoken replies. It demonstrates **multimodal AI capabilities**, **tool usage**, and a clean, modern user interface design.
+This repository contains SageGPT, an intelligent, multimodal AI tutor built with Python, OpenAI’s GPT-4o-mini, and Gradio. SageGPT acts as a friendly technical tutor who answers questions about code, software engineering, data science, and LLMs by providing concise explanations, code examples, and optionally generating diagrams and spoken replies. It demonstrates multimodal AI capabilities, tool usage, and a clean, modern user interface design.
 
 ## Screenshots
 
@@ -68,6 +68,30 @@ Audio plays automatically in-app or can be downloaded:*
 - **Enable Voice Replies:** Turn on “Enable voice replies” to hear spoken responses.  
 - **Clear Chat:** Reset the conversation anytime.  
 
+## How SageGPT Works
+
+### Multimodal Chat Loop
+  - Accepts user input from Gradio.  
+  - Uses OpenAI’s GPT-4o-mini model to process text and tool calls.  
+  - Executes custom tool calls (e.g., code snippet retrieval).  
+  - Optionally triggers DALL·E 3 to generate a technical diagram if the *Image* toggle is on.  
+  - Optionally converts the final response into speech using TTS if the *Voice* toggle is on.  
+  - Displays text, image, and audio output in the interface based on user-selected options.  
+
+### System Prompt Behavior
+  - Guided by a system message defining SageGPT as a calm, knowledgeable tutor.  
+  - Encourages concise answers and example-driven teaching style.  
+
+### Tool Integration
+  - `get_code_snippet()` retrieves short, predefined code snippets for core programming concepts.  
+  - Integrated into OpenAI’s function calling*interface for dynamic behavior.  
+
+### Technical Highlights
+  - Combines GPT-4o-mini, DALL·E 3, and TTS models.  
+  - Implements structured tool calling with JSON schema validation.  
+  - Uses Gradio Blocks for responsive layout and clean styling.  
+  - Plays audio via PyDub directly in the app.
+    
 ## Installation
 
 1. **Clone the repository**  
@@ -98,41 +122,3 @@ python sagegpt.py
 
 6. **Open the Gradio interface**  
 A local URL and optional public shareable URL will appear in the console.
-
-## How SageGPT Works
-
-### Multimodal Chat Loop
-  - Accepts user input from Gradio.  
-  - Uses OpenAI’s GPT-4o-mini model to process text and tool calls.  
-  - Executes custom tool calls (e.g., code snippet retrieval).  
-  - Optionally triggers DALL·E 3 to generate a technical diagram if the *Image* toggle is on.  
-  - Optionally converts the final response into speech using TTS if the *Voice* toggle is on.  
-  - Displays text, image, and audio output in the interface based on user-selected options.  
-
-### System Prompt Behavior
-  - Guided by a system message defining SageGPT as a calm, knowledgeable tutor.  
-  - Encourages concise answers and example-driven teaching style.  
-
-### Tool Integration
-  - `get_code_snippet()` retrieves short, predefined code snippets for core programming concepts.  
-  - Integrated into OpenAI’s function calling*interface for dynamic behavior.  
-
-### Technical Highlights
-  - Combines GPT-4o-mini, DALL·E 3, and TTS models.  
-  - Implements structured tool calling with JSON schema validation.  
-  - Uses Gradio Blocks for responsive layout and clean styling.  
-  - Plays audio via PyDub directly in the app.  
-
-## File Structure
-```
-sagegpt/
-├── assets/
-│   ├── audio/
-│   ├── icons/
-│   └── screenshots/
-├── sagegpt.py
-├── README.md
-├── requirements.txt
-├── .gitignore
-└── LICENSE
-```
